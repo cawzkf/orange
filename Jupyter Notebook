@@ -1,0 +1,79 @@
+import sys #sistema
+import os #sistema
+import pandas as pd # ler dados
+import numpy as np #trabalhar com array
+import seaborn as sns #graficos
+import matplotlib.pyplot as plt #graficos
+import plotly.express as px #graficos
+
+dataset_dir = r'C:\Users\OCEAN\Downloads'
+sys.path.append(dataset_dir)
+os.chdir(dataset_dir)
+
+data = 'credit_data.csv'
+acerola = pd.read_csv(data)
+
+print(acerola.head())  # Exibe as primeiras 5 linhas do DataFrame 'acerola'
+
+acerola.head(27)  # Exibe os primeiros 27 registros do DataFrame
+
+!pip -q install plotly --upgrade  # Instala ou atualiza o pacote Plotly de forma silenciosa
+
+!pip -q install yellowbrick --upgrade  # Instala ou atualiza o pacote Yellowbrick de forma silenciosa
+
+acerola  # Exibe o DataFrame inteiro, útil para verificar a estrutura
+
+acerola.tail()  # Exibe as últimas 5 linhas do DataFrame
+
+acerola.describe()  # Fornece uma descrição estatística das colunas numéricas do DataFrame
+
+acerola[acerola['income'] >= 69995.685578]  # Filtra o DataFrame para mostrar registros onde a coluna 'income' é maior ou igual a 69995.685578
+
+acerola[acerola['loan'] <= 1.377630]  # Filtra o DataFrame para mostrar registros onde a coluna 'loan' é menor ou igual a 1.377630
+
+np.unique(acerola['default'], return_counts=True)  # Retorna os valores únicos da coluna 'default' e quantas vezes cada valor aparece
+
+sns.countplot(x=acerola['default']);  # Cria um gráfico de barras mostrando a contagem de valores únicos na coluna 'default'
+
+acerola[acerola['age'] < 0]  # Mostra os registros onde a coluna 'age' possui valores negativos
+
+acerola = acerola.drop(acerola[acerola['age'] < 0].index)  # Remove as linhas com valores negativos na coluna 'age' com base no índice
+
+acerola  # Exibe o DataFrame 'acerola' após as remoções
+
+acerola.isnull().sum()  # Conta o número de valores nulos em cada coluna do DataFrame 'acerola'
+
+acerola['age'][acerola['age'].notnull()].mean()  # Calcula a média da coluna 'age' ignorando os valores nulos
+
+acerola['age'].fillna(acerola['age'].mean(), inplace=True)  # Preenche os valores nulos na coluna 'age' com a média dessa coluna, alterando o DataFrame original
+
+acerola.loc[acerola['clientid'].isin([29, 31, 32])]  # Filtra o DataFrame para mostrar as linhas onde 'clientid' está nos valores 29, 31, ou 32
+
+type(acerola)  # Verifica o tipo do objeto 'acerola', que é um DataFrame do pandas.
+
+X_acerola = acerola.iloc[:, 1:4].values  # Seleciona as colunas 1 a 3 de 'acerola' e as transforma em um array NumPy.
+
+X_acerola  # Mostra o conteúdo de 'X_acerola', que é um array NumPy.
+
+type(X_acerola)  # Verifica o tipo de 'X_acerola', que é um array NumPy.
+
+X_acerola[0]  # Exibe a primeira linha do array 'X_acerola'.
+
+y_acerola = acerola.iloc[:, 4]  # Seleciona a coluna 4 de 'acerola' para criar 'y_acerola', provavelmente os rótulos.
+
+X_acerola[:, 0].max(), X_acerola[:, 1].max(), X_acerola[:, 2].max()  # Obtém o valor máximo de cada uma das 3 colunas selecionadas em 'X_acerola'.
+
+X_acerola[:, 0].min(), X_acerola[:, 1].min(), X_acerola[:, 2].min()  # Obtém o valor mínimo de cada uma das 3 colunas selecionadas em 'X_acerola'.
+
+from sklearn.preprocessing import StandardScaler  # Importa o `StandardScaler` para padronizar os dados.
+
+scaler_acerola = StandardScaler()  # Cria uma instância de 'StandardScaler' para escalonar os dados.
+
+X_acerola = scaler_acerola.fit_transform(X_acerola)  # Padroniza os dados de 'X_acerola' (z-score normalization).
+
+X_acerola.mean()  # Calcula a média de todo o array 'X_acerola' após a padronização (deveria ser próximo de zero).
+
+X_acerola  # Mostra o array 'X_acerola' já padronizado.
+
+X_acerola[:, 0].min(), X_acerola[:, 1].min(), X_acerola[:, 2].min()  # Mostra os novos valores mínimos das 3 colunas de 'X_acerola' após a padronização.
+
