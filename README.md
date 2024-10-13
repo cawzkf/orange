@@ -53,7 +53,7 @@ Este projeto realiza uma análise exploratória e pré-processamento de dados fi
 
 1. Clone o repositório para sua máquina local.
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/cawzkf/orange
    ```
 2. Certifique-se de que o arquivo `credit_data.csv` está no diretório correto especificado no script:
    ```python
