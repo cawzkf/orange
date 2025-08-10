@@ -192,7 +192,7 @@ Este projeto foi desenvolvido como parte do programa educacional da **Ocean**, f
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/cawzkf/analise-dados-financeiros)
 
-**Repositório:** [github.com/cawzkf/orange](https://github.com/cawzkf/orange)
+**Repositório:** [github.com/cawzkf/analise-dados-financeiros](https://github.com/cawzkf/analise-dados-financeiros)
 
 ---
 
